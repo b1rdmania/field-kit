@@ -1,3 +1,4 @@
 .env
 field/
 __pycache__/
+HANDOVER-*.md
