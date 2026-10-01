@@ -3,7 +3,6 @@
 
 Commands:
   search "query" [--num 10] [--since 2026-01-01] [--category company]
-  similar https://example.com [--num 10]
   answer "question"
   fetch https://example.com/sponsors [--chars 8000]
 
@@ -84,15 +83,6 @@ def cmd_search(keys, a):
     return "perplexity", perplexity_search(keys["PERPLEXITY_API_KEY"], a.query, a.num)
 
 
-def cmd_similar(keys, a):
-    if keys["EXA_API_KEY"]:
-        body = {"url": a.url, "numResults": a.num, "excludeSourceDomain": True,
-                "contents": {"text": {"maxCharacters": 600}}}
-        return "exa", exa_rows(exa(keys["EXA_API_KEY"], "/findSimilar", body)["results"])
-    return "perplexity", perplexity_search(
-        keys["PERPLEXITY_API_KEY"], f"companies similar to {a.url}", a.num)
-
-
 def cmd_answer(keys, a):
     if keys["EXA_API_KEY"]:
         out = exa(keys["EXA_API_KEY"], "/answer", {"query": a.question, "text": False})
@@ -122,10 +112,6 @@ def main():
     s.add_argument("--since")
     s.add_argument("--category", help="Exa only: company, news, research paper")
     s.set_defaults(fn=cmd_search)
-    m = sub.add_parser("similar")
-    m.add_argument("url")
-    m.add_argument("--num", type=int, default=10)
-    m.set_defaults(fn=cmd_similar)
     q = sub.add_parser("answer")
     q.add_argument("question")
     q.set_defaults(fn=cmd_answer)

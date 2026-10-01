@@ -1,6 +1,6 @@
 # field-kit
 
-Plans and runs event-led pipeline for B2B teams, starting from the target account list. A skill for Claude, ChatGPT and Codex.
+Plans event-led pipeline for B2B teams from the target account list, then proves each event with the team's own guest lists. A skill for Claude, ChatGPT and Codex.
 
 ## What it does
 
@@ -20,7 +20,7 @@ flowchart LR
 | --- | --- |
 | "Write a 90-day field plan for London" | Goal, accounts by tier, a 13-week calendar, budget and measures, in two pages |
 | "Here's our target list" / "Find companies like our customers" / "We have no list yet" | A reviewed `target-accounts.csv`: cleaned and tiered, mirrored from customers, or built from your buyer profile |
-| "Which events should we do in Europe?" | Conferences, competitor events and recurring meetups, the target accounts at each, and the gap |
+| "Which events should we do in Europe?" | Conferences ranked by audience fit, competitor event history, recurring meetups, the gap, and a note to each organiser asking for the attendee companies |
 | "Log last night's demo night" | An attendee sheet and one row in a ledger of every event |
 | "Which accounts are in motion this week?" | Accounts with dated signals, one play and one owner each |
 

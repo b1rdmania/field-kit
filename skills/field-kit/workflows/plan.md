@@ -11,7 +11,7 @@ Before you start, `field/company.md` must be filled. If `field/target-accounts.c
 
 ## The plan
 
-`field/out/plan-<region>-<date>.md`, two pages at most:
+`field/out/plan-<region>-<date>.md`, 600 words at most outside the tables. Week 1 starts next Monday.
 
 1. **Goal.** What a win is, from `company.md`, as numbers for 90 days. If the user has no numbers, propose them and mark them as proposals. Pipeline needs "Average deal size" from `company.md`. If it is blank, give meetings and opportunities only.
 2. **Accounts.** The target accounts by tier, with the city of each.
