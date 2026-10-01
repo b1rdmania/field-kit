@@ -13,8 +13,9 @@ a .env file in the working folder. Output is JSON on stdout:
 With Exa, answer returns one result: {"answer", "citations": [rows]}.
 Fetch returns the page text in "text". It needs Exa.
 
-Exit code 2 means no key is set, or the command needs Exa and only
-Perplexity is set. The caller then uses its own web search or fetch.
+If Exa fails, search and answer try Perplexity. Exit code 2 means no
+provider worked: no key, a failed call, curl missing, or a command that
+needs Exa. The caller then uses its own web search or fetch.
 """
 
 import argparse
@@ -29,14 +30,19 @@ PERPLEXITY = "https://api.perplexity.ai"
 NO_KEY = 2
 
 
+class SearchError(Exception):
+    pass
+
+
 def load_keys():
     keys = {k: os.environ.get(k) for k in ("EXA_API_KEY", "PERPLEXITY_API_KEY")}
     env = pathlib.Path.cwd() / ".env"
     if env.exists():
         for line in env.read_text().splitlines():
-            name, _, value = line.partition("=")
-            if name.strip() in keys and not keys[name.strip()]:
-                keys[name.strip()] = value.strip().strip('"')
+            name, _, value = line.strip().removeprefix("export ").partition("=")
+            name = name.strip()
+            if name in keys and not keys[name]:
+                keys[name] = value.strip().strip("\"'")
     return keys
 
 
@@ -46,10 +52,18 @@ def post(url, headers, body):
            "-H", "Content-Type: application/json", "-d", json.dumps(body)]
     for h in headers:
         cmd += ["-H", h]
-    r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    except FileNotFoundError:
+        raise SearchError("curl is not installed")
+    except subprocess.TimeoutExpired:
+        raise SearchError("timed out after 120 seconds")
     if r.returncode != 0:
-        sys.exit(f"search failed: {(r.stdout or r.stderr)[:300]}")
-    return json.loads(r.stdout)
+        raise SearchError((r.stdout or r.stderr)[:300])
+    try:
+        return json.loads(r.stdout)
+    except json.JSONDecodeError:
+        raise SearchError("response was not JSON")
 
 
 def exa(key, path, body):
@@ -70,37 +84,42 @@ def perplexity_search(key, query, num):
             for r in out.get("results", [])]
 
 
-def cmd_search(keys, a):
-    if keys["EXA_API_KEY"]:
+# Each command returns its attempts in order: (provider, key name, call).
+
+
+def cmd_search(a):
+    def exa_call(key):
         body = {"query": a.query, "numResults": a.num,
                 "contents": {"text": {"maxCharacters": 1200}}}
         if a.category:
             body["category"] = a.category
         if a.since:
             body["startPublishedDate"] = a.since
-        return "exa", exa_rows(exa(keys["EXA_API_KEY"], "/search", body)["results"])
+        return exa_rows(exa(key, "/search", body)["results"])
     # Perplexity ignores --since and --category. Check dates in the results.
-    return "perplexity", perplexity_search(keys["PERPLEXITY_API_KEY"], a.query, a.num)
+    return [("exa", "EXA_API_KEY", exa_call),
+            ("perplexity", "PERPLEXITY_API_KEY",
+             lambda key: perplexity_search(key, a.query, a.num))]
 
 
-def cmd_answer(keys, a):
-    if keys["EXA_API_KEY"]:
-        out = exa(keys["EXA_API_KEY"], "/answer", {"query": a.question, "text": False})
+def cmd_answer(a):
+    def exa_call(key):
+        out = exa(key, "/answer", {"query": a.question, "text": False})
         rows = [{"title": c.get("title"), "url": c.get("url"), "published": None,
                  "text": ""} for c in out.get("citations", [])[:5]]
-        return "exa", [{"answer": out.get("answer", ""), "citations": rows}]
-    return "perplexity", perplexity_search(keys["PERPLEXITY_API_KEY"], a.question, 8)
+        return [{"answer": out.get("answer", ""), "citations": rows}]
+    return [("exa", "EXA_API_KEY", exa_call),
+            ("perplexity", "PERPLEXITY_API_KEY",
+             lambda key: perplexity_search(key, a.question, 8))]
 
 
-def cmd_fetch(keys, a):
-    if not keys["EXA_API_KEY"]:
-        print("fetch needs EXA_API_KEY. Use the host's own fetch tool.", file=sys.stderr)
-        sys.exit(NO_KEY)
-    out = exa(keys["EXA_API_KEY"], "/contents",
-              {"urls": [a.url], "text": {"maxCharacters": a.chars}})
-    return "exa", [{"title": r.get("title"), "url": r.get("url"),
-                    "published": r.get("publishedDate"), "text": r.get("text") or ""}
-                   for r in out.get("results", [])]
+def cmd_fetch(a):
+    def exa_call(key):
+        out = exa(key, "/contents", {"urls": [a.url], "text": {"maxCharacters": a.chars}})
+        return [{"title": r.get("title"), "url": r.get("url"),
+                 "published": r.get("publishedDate"), "text": r.get("text") or ""}
+                for r in out.get("results", [])]
+    return [("exa", "EXA_API_KEY", exa_call)]
 
 
 def main():
@@ -122,13 +141,27 @@ def main():
     a = p.parse_args()
 
     keys = load_keys()
-    if not any(keys.values()):
-        print("No search key. Set EXA_API_KEY (preferred) or PERPLEXITY_API_KEY. "
-              "Until then, use the host's own web search.", file=sys.stderr)
-        sys.exit(NO_KEY)
-    provider, results = a.fn(keys, a)
-    json.dump({"provider": provider, "results": results}, sys.stdout, indent=1)
-    print()
+    errors = []
+    for provider, key_name, call in a.fn(a):
+        if not keys[key_name]:
+            continue
+        try:
+            results = call(keys[key_name])
+        except SearchError as e:
+            errors.append(f"{provider}: {e}")
+            continue
+        json.dump({"provider": provider, "results": results}, sys.stdout, indent=1)
+        print()
+        return
+    if errors:
+        print("Search failed. " + " | ".join(errors), file=sys.stderr)
+    elif a.cmd == "fetch":
+        print("fetch needs EXA_API_KEY.", file=sys.stderr)
+    else:
+        print("No search key. Set EXA_API_KEY (preferred) or PERPLEXITY_API_KEY.",
+              file=sys.stderr)
+    print("Use the host's own web search and fetch tools.", file=sys.stderr)
+    sys.exit(NO_KEY)
 
 
 if __name__ == "__main__":
