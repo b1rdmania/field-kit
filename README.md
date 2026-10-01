@@ -61,6 +61,10 @@ PERPLEXITY_API_KEY=...   # used if no Exa key
 
 Set either key in the environment or in a `.env` file in the working folder. The search script runs in Claude Code and Codex. On Claude.ai and ChatGPT the skill uses the host's search.
 
+## Requirements
+
+`python3` and `curl` for the search script. Without them, the skill uses the host's web search.
+
 ## What it doesn't do
 
 - It does not contact anyone. It drafts messages only on request and never sends them.

@@ -28,4 +28,3 @@ An account is in motion when, in the last 60 days, it has:
 1. **In motion.** One block per account: the dated evidence with sources, the people named by the sources, one play and one owner. Take the owner from `target-accounts.csv`. The play is one of: an invitation to the next event in the plan, a seat at a dinner, a direct note from the owner with the signal as the reason, or hold while sales owns an open opportunity.
 2. **Movement.** Accounts that entered or left motion since the last report in `field/out/`.
 3. **Count.** Accounts watched, signals found, accounts in motion.
-4. **Gaps.**
