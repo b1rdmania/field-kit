@@ -1,0 +1,7 @@
+interface:
+  display_name: "field-kit"
+  short_description: "Plan events and track the companies they reach"
+  default_prompt: "Use $field-kit to build an event plan for my company."
+
+policy:
+  allow_implicit_invocation: true

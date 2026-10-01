@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "field-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Work out an event plan for your scaling company: what competitors are doing, where your buyers gather, which companies to meet, a 13-week calendar with costs, and a ledger of what each event produced.",
   "author": {
     "name": "b1rdmania",
@@ -20,10 +20,31 @@
     "com.openai": {
       "interface": {
         "displayName": "field-kit",
-        "shortDescription": "Work out an event plan for your scaling company",
-        "longDescription": "Give it your company name or website. It shows what your competitors are doing, where your buyers gather and which companies you want in the room, then builds a 13-week event calendar with costs and tracks what each event produced. Works best with an Exa API key.",
+        "shortDescription": "Plan events that reach buyers",
+        "longDescription": "Give field-kit your company name or website. It researches your buyers, competitors and events, then drafts a brief.\nAnswer the gaps and review the companies you want to meet.\n\nBuild a 13-week event calendar with costs and owners. Compare conferences, recurring meetups and small events you run yourself.\nAfter each event, log attendance and costs against your target companies. Use the weekly report to choose follow-up work.\n\nResearch includes source links and marks gaps. Costs without quotes are estimates.\nPublic speaker lists do not prove attendance. You review account matches and supply sales outcomes.\n\nOn hosts that can run Python and curl, field-kit searches Exa or Perplexity using your own API key.\nIf the script cannot run or no provider works, use the host's web search.\nProvider charges and host limits may apply. field-kit does not send messages, book events or connect to your CRM.",
         "developerName": "b1rdmania",
-        "category": "Productivity"
+        "category": "Productivity",
+        "websiteURL": "https://github.com/b1rdmania/field-kit",
+        "supportURL": "https://github.com/b1rdmania/field-kit/issues",
+        "privacyPolicyURL": "https://github.com/b1rdmania/field-kit/blob/main/PRIVACY.md",
+        "termsOfServiceURL": "https://github.com/b1rdmania/field-kit/blob/main/TERMS.md",
+        "brandColor": "#145747",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg",
+        "screenshots": [
+          "./assets/screenshot-plan.jpg",
+          "./assets/screenshot-ledger.jpg"
+        ],
+        "defaultPrompt": [
+          "Build us an event plan for Attio.",
+          "What are our competitors doing at events?",
+          "Log our latest event against our target accounts."
+        ],
+        "capabilities": [
+          "Research companies and events",
+          "Build event plans",
+          "Record event results"
+        ]
       }
     }
   }
