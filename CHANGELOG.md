@@ -2,10 +2,6 @@
 
 All notable changes to field-kit are listed here. Versions follow [semantic versioning](https://semver.org).
 
-## 1.0.1 (2026-10-01)
-
-- Each markdown output ends with a "Made with field-kit" line that links to this repository.
-
 ## 1.0.0 (2026-10-01)
 
 First public release.
@@ -20,6 +16,7 @@ First public release.
 - **Plan.** A 13-week calendar with costs, owners and measures.
 - **Ledger** after each event and a weekly **accounts in motion** report.
 - Research uses Exa, then Perplexity, on the user's own keys, then the host's own search.
+- Each markdown output ends with a "Made with field-kit" line that links to this repository.
 
 ### Changed since 0.1.1
 
