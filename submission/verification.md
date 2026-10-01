@@ -3,8 +3,8 @@
 Checked 1 October 2026. Baseline: `9b5df05`. Codex CLI: `0.159.3`.
 The tests used the configured Codex model, GPT-6-Astra, with medium reasoning.
 
-No directory upload, submission, publication or Git push was made.
-The package files are prepared locally. The checks below must be resolved before calling the release fully verified.
+No upload to OpenAI or directory submission was made.
+The listing files and policy links were published to GitHub in `8e890c9`. The checks below must be resolved before calling the release fully verified.
 
 ## 1. Codex CLI install
 
@@ -114,7 +114,7 @@ The finished ZIP installed through Codex from a clean temporary marketplace as v
 An earlier local test placed its cache inside the source folder and hit a file-name-too-long error.
 Moving the test home outside the package source fixed it. The failed test cache was removed.
 
-The public privacy and terms URLs point to files in `main`. Publish the commits before relying on those URLs.
+The public privacy and terms URLs point to the published files in `main`.
 Confirm the verified publisher name and recheck the remaining tests before submitting.
 
 Field names and image rules were checked against the official documentation:
