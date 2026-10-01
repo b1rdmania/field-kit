@@ -69,7 +69,12 @@ Then pick the three strongest buyers found as seeds. Strongest means a close fit
 
 ## Domain check
 
-For each account with no domain, run `search "<account>" --category company --num 3`. Take the domain only from a result whose title or URL contains the account name. If no result matches, write "unconfirmed".
+For each account with no domain:
+
+1. If the research already found the company's own website, use that domain.
+2. Otherwise run `search "<account> <city> <what it does>" --category company --num 3`.
+3. Take a domain only when the result is the company's own site and its text matches the city and what the company does. A name match alone is not enough. Many companies share a name.
+4. If two results both fit, or none does, write "unconfirmed".
 
 ## Review
 

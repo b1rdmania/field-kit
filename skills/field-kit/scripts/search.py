@@ -4,7 +4,7 @@
 Commands:
   search "query" [--num 10] [--since 2026-01-01] [--category company]
   answer "question"
-  fetch https://example.com/sponsors [--chars 8000]
+  fetch https://example.com/sponsors [--chars 40000]
 
 Keys come from EXA_API_KEY or PERPLEXITY_API_KEY, in the environment or in
 a .env file in the working folder. Output is JSON on stdout:
@@ -117,7 +117,7 @@ def main():
     q.set_defaults(fn=cmd_answer)
     f = sub.add_parser("fetch")
     f.add_argument("url")
-    f.add_argument("--chars", type=int, default=8000)
+    f.add_argument("--chars", type=int, default=40000)
     f.set_defaults(fn=cmd_fetch)
     a = p.parse_args()
 

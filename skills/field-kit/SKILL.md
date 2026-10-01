@@ -26,7 +26,7 @@ python3 scripts/search.py answer "question"
 python3 scripts/search.py fetch https://example.com/sponsors
 ```
 
-Use `fetch` to read a full page, such as a sponsor list, a speaker list or a customer page. Search results hold only a short part of each page.
+Use `fetch` to read a full page, such as a sponsor list, a speaker list or a customer page. Search results hold only a short part of each page. `fetch` returns up to 40,000 characters. Use `--chars` for more.
 
 If the script exits with code 2, no key is set. Tell the user once: "field-kit works best with an Exa API key (exa.ai). Set EXA_API_KEY in your environment or in a .env file in this folder. I will use my own web search until then." Then use the host's web search tool for the rest of the run. Do not repeat the message.
 
@@ -53,6 +53,7 @@ Read the workflow file before you start it.
 - Write to `field/out/` as markdown, one file per run, named `<workflow>-<subject>-<date>.md`. Ledgers are CSV.
 - Every fact has a source URL. If the research did not find it, say so. Do not fill gaps from memory.
 - Mark each target account that appears in a result. The target account match is the most important column in every table.
+- A match counts only when the text names the company as a company: the whole name, in a context such as "at Lloyds", a logo caption or a sponsor list. A common word ("Tomorro" in "tomorrow"), a person with the same name, or a past employer ("formerly at") is not a match. When in doubt, write "possible" and give the line.
 - Companies first. Name a person only when a public source names them in that role, and give the source.
 - Plain English. Sentences of 20 words or fewer. Active voice. Tables over prose.
 - End every output with a short "Gaps" section: what the research could not establish and what a person checks next.
