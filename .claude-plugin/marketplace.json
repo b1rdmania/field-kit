@@ -1,0 +1,14 @@
+{
+  "name": "field-kit",
+  "description": "Event-led pipeline for B2B teams.",
+  "owner": {
+    "name": "b1rdmania"
+  },
+  "plugins": [
+    {
+      "name": "field-kit",
+      "source": "./",
+      "description": "Event-led pipeline for B2B teams."
+    }
+  ]
+}
