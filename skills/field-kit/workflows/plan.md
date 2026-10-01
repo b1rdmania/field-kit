@@ -7,7 +7,7 @@ A 13-week event plan for one region. This is the default workflow.
 1. If `field/brief.md` does not exist, run `brief.md`.
 2. Run `competitors.md`.
 3. Run `events.md`.
-4. If `field/target-accounts.csv` is empty, run `accounts.md` in Build mode and show the list for a quick review. If it has fewer than 15 accounts, say so under Risks and continue.
+4. If `field/target-accounts.csv` is empty, run `accounts.md` in Build mode, including its Review step. If it has fewer than 15 accounts, say so under Risks and continue.
 5. Write the plan.
 
 ## The plan
