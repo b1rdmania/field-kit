@@ -26,6 +26,14 @@ One per line.
 
 The region for this plan. The field budget for the next 90 days, if known.
 
+## Average deal size
+
+The usual first-year contract value. Leave blank if unknown.
+
+## Typical costs
+
+What a dinner, a demo night and a conference sponsorship cost you. Leave blank if unknown.
+
 ## What a win is
 
 How sales counts an event as a success: meetings booked, opportunities, pipeline sourced or influenced. Use the sales team's own words.

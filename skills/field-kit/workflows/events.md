@@ -2,13 +2,13 @@
 
 Which rooms reach the target accounts? Three kinds: conferences where they already go, events competitors run, and recurring meetups someone else already runs.
 
-Inputs: competitors and region from `company.md`, target accounts from `target-accounts.csv`, and the next 6 to 12 months as the window. For meetups, use the one or two cities with the most target accounts unless the user names a city.
+Inputs: competitors and region from `company.md`, target accounts from `target-accounts.csv`, and the plan's 90 days as the window unless the user gives another. Drop every event with a date before today. For meetups, use the one or two cities with the most target accounts unless the user names a city.
 
 ## Research
 
 1. **Competitors.** For each competitor: `search "<competitor> event OR sponsor OR meetup OR dinner <region>" --since <one year ago>`. Note the format, place and date.
-2. **Conferences.** `search "<buyer type> conference <region> <year>"` and `answer "Which conferences and summits in <region> in the next 12 months attract <who to meet>?"`. For each major event, search for its speaker or sponsor list and mark every target account that appears.
-3. **Meetups.** `search "<who to meet> meetup OR demo night OR community <city>" --since <one year ago>` and `answer "Which recurring meetups and communities in <city> bring together <who to meet>? How often do they meet and how many attend?"`. A recurring meetup meets more than once. Drop any with no event in 6 months.
+2. **Conferences.** `search "<buyer type> conference <region> <year>"` and `answer "Which conferences and summits in <region> between <today> and <end of window> attract <who to meet>?"`. For each major event, find its sponsor or speaker page, then `fetch <url>`. Mark every target account named in the page text. If no page lists them, write "not published".
+3. **Meetups.** In each city: `search "<who to meet> meetup OR demo night OR community <city>" --since <one year ago>` and `answer "Which recurring meetups and communities in <city> bring together <who to meet>? How often do they meet and how many attend?"`. A recurring meetup meets more than once. Drop any with no event in 6 months.
 
 ## Output
 

@@ -26,6 +26,14 @@ Reducto, Unstructured, LlamaParse, Mistral OCR
 
 London and Western Europe. £60,000 for 90 days.
 
+## Average deal size
+
+£30,000 first-year contract.
+
+## Typical costs
+
+Dinner for 12: £2,500. Co-hosted demo night: £1,500. Conference sponsorship: £8,000 to £20,000.
+
 ## What a win is
 
 Meetings booked with target accounts, and opportunities sales accepts within 30 days of an event.

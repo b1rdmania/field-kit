@@ -5,12 +5,17 @@ Commands:
   search "query" [--num 10] [--since 2026-01-01] [--category company]
   similar https://example.com [--num 10]
   answer "question"
+  fetch https://example.com/sponsors [--chars 8000]
 
 Keys come from EXA_API_KEY or PERPLEXITY_API_KEY, in the environment or in
 a .env file in the working folder. Output is JSON on stdout:
   {"provider": "exa", "results": [{"title", "url", "published", "text"}]}
 
-Exit code 2 means no key is set. The caller then uses its own web search.
+With Exa, answer returns one result: {"answer", "citations": [rows]}.
+Fetch returns the page text in "text". It needs Exa.
+
+Exit code 2 means no key is set, or the command needs Exa and only
+Perplexity is set. The caller then uses its own web search or fetch.
 """
 
 import argparse
@@ -97,6 +102,17 @@ def cmd_answer(keys, a):
     return "perplexity", perplexity_search(keys["PERPLEXITY_API_KEY"], a.question, 8)
 
 
+def cmd_fetch(keys, a):
+    if not keys["EXA_API_KEY"]:
+        print("fetch needs EXA_API_KEY. Use the host's own fetch tool.", file=sys.stderr)
+        sys.exit(NO_KEY)
+    out = exa(keys["EXA_API_KEY"], "/contents",
+              {"urls": [a.url], "text": {"maxCharacters": a.chars}})
+    return "exa", [{"title": r.get("title"), "url": r.get("url"),
+                    "published": r.get("publishedDate"), "text": r.get("text") or ""}
+                   for r in out.get("results", [])]
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -113,6 +129,10 @@ def main():
     q = sub.add_parser("answer")
     q.add_argument("question")
     q.set_defaults(fn=cmd_answer)
+    f = sub.add_parser("fetch")
+    f.add_argument("url")
+    f.add_argument("--chars", type=int, default=8000)
+    f.set_defaults(fn=cmd_fetch)
     a = p.parse_args()
 
     keys = load_keys()

@@ -24,9 +24,16 @@ Run `scripts/search.py` (in this skill's folder) for all web research. It uses E
 python3 scripts/search.py search "query" --num 10 --since 2026-01-01 --category company
 python3 scripts/search.py similar https://example.com --num 10
 python3 scripts/search.py answer "question"
+python3 scripts/search.py fetch https://example.com/sponsors
 ```
 
+Use `fetch` to read a full page, such as a sponsor list, a speaker list or a customer page. Search results hold only a short part of each page.
+
 If the script exits with code 2, no key is set. Tell the user once: "field-kit works best with an Exa API key (exa.ai). Set EXA_API_KEY in your environment or in a .env file in this folder. I will use my own web search until then." Then use the host's web search tool for the rest of the run. Do not repeat the message.
+
+`--category company`, `similar` and `fetch` work best with Exa. Without Exa, `fetch` exits with code 2: use the host's fetch tool.
+
+**Region.** Before any search, split the region in `company.md` into its main cities, or into countries for a large region. Search each city or country on its own. A search for "London and Western Europe" returns noise.
 
 `--category company` and `similar` work best with Exa. With other providers, check that each result is a company page.
 

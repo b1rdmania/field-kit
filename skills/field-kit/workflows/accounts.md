@@ -16,7 +16,7 @@ All three modes end with the same review step. Do not write `target-accounts.csv
 
 1. Read the list. Accept any columns. Map them to `account,domain,owner,status,tier,notes`.
 2. Remove duplicates by domain, then by name.
-3. For each account with no domain, run `search "<account>" --category company --num 1` and take the domain from the result. Mark the domain "unconfirmed" if no result matches.
+3. For each account with no domain, run `search "<account>" --category company --num 3`. Take the domain only from a result whose title or URL contains the account name. If no result matches, write "unconfirmed".
 4. Propose a tier for each account with no tier. Tier 1 fits "Who buys" in `company.md` best. Give one short reason per tier 1 account.
 5. Do not change an owner or status the user gave.
 
@@ -30,26 +30,30 @@ For each seed:
 
 1. `search "<what the seed does>, company headquartered in <region>" --category company --num 10`
 2. `search "<region> startup building <what the seed does> raises funding round" --since <one year ago> --num 6`
-3. Find the seed's homepage, then `similar <homepage> --num 10`.
+3. Find the seed's own homepage: the company's domain, not a LinkedIn, Crunchbase or news page about it. Then run `similar <homepage> --num 10`.
 4. One `answer`: "Which <region> companies are the best-known equivalents of <seed> (<what it does>)? Name the companies, their cities and their latest funding."
 
 ## Build
 
-Use "What we sell", "Who buys" and "Region" from `company.md`. If "Who buys" is vague, ask the user for two or three company types before you search.
+Aim for 20 to 30 approved accounts.
 
-For each company type:
+Use "What we sell", "Who buys" and "Region" from `company.md`. Turn "Who buys" into two or three concrete company types. A concrete type names a product and a buyer, for example "contract review software for law firms". "AI-native software company" is too broad. If you cannot make the types concrete, ask the user.
 
-1. `search "<company type> company headquartered in <region>" --category company --num 15`
-2. `search "<region> <company type> raises funding round" --since <one year ago> --num 10`
-3. `answer "Which are the leading <company type> companies in <region>? Name the companies, their cities and their latest funding."`
+For each company type and each city or country in the region:
 
-Then take the three strongest results and run Mirror mode on them to fill the list.
+1. `search "<company type> company headquartered in <city>" --category company --num 10`
+2. `search "<city> <company type> raises funding round" --since <one year ago> --num 6`
+
+Then one `answer` per company type: "Which are the leading <company type> companies in <region>? Name the companies, their cities and their latest funding."
+
+Pick the three strongest results as seeds. Strongest means a close fit to "Who buys" and named funding or named customers. Run Mirror mode on those seeds to fill the list.
 
 ## Rules for Mirror and Build
 
 - Drop directories, listicles, media, consultancies, the seeds themselves and duplicates by domain.
+- Drop the competitors in `company.md` and any company that sells the same product as the user.
 - A company must have its headquarters or a real office in the region.
-- A company must show activity in the last 18 months in the source: funding, a launch, open roles or a dated post.
+- Look for activity in the last 18 months: funding, a launch, open roles or a dated post. If the sources show none, keep the company, write "activity unconfirmed" and put it lower in the list.
 - The city must come from the source. Write "unconfirmed" if it does not.
 - Companies with named funding, named customers or a known product go first.
 - At most 30 new accounts per run.
