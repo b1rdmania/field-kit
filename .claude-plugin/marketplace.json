@@ -1,6 +1,6 @@
 {
   "name": "field-kit",
-  "description": "Event-led pipeline for B2B teams.",
+  "description": "Work out an event plan for your scaling company.",
   "owner": {
     "name": "b1rdmania"
   },
@@ -8,7 +8,7 @@
     {
       "name": "field-kit",
       "source": "./",
-      "description": "Event-led pipeline for B2B teams."
+      "description": "Work out an event plan for your scaling company."
     }
   ]
 }

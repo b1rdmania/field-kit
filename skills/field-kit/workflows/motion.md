@@ -6,7 +6,7 @@ Inputs: `field/target-accounts.csv`, `field/signals.csv` (copy it from `template
 
 ## Watch
 
-For each account and each signal, fill the query: `{account}` is the account, `{competitors}` comes from `company.md`, `{team}` is the team that would use the product. Run `search "<query>" --since <90 days ago> --num 5`.
+For each account and each signal, fill the query: `{account}` is the account, `{competitors}` comes from the brief, `{team}` is the team that would use the product. Run `search "<query>" --since <90 days ago> --num 5`.
 
 Keep a result only if the page text shows the signal for that account. Append each kept result to `field/signal-log.csv`:
 

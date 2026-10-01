@@ -1,6 +1,6 @@
-# Company context
+# Brief
 
-Every field-kit workflow reads this file. Short answers are fine.
+Every field-kit workflow reads this file. field-kit drafts it from your website. Mark guesses "(guess)".
 
 ## What we sell
 
@@ -22,9 +22,13 @@ Public customers only, one per line, with what each one does.
 
 One per line.
 
+## Stage
+
+Funding stage, team size, and who will run events.
+
 ## Region and budget
 
-The region for this plan. The field budget for the next 90 days, if known.
+Where the events happen. What you can spend in the next 13 weeks.
 
 ## Average deal size
 
@@ -38,6 +42,14 @@ What a dinner, a demo night and a conference sponsorship cost you. Leave blank i
 
 How sales counts an event as a success: meetings booked, opportunities, pipeline sourced or influenced. Use the sales team's own words.
 
+## Past events
+
+What you have done and what came of it.
+
 ## What not to claim
 
 Pricing, roadmap, certifications or customers that must not appear in any output.
+
+## The problem
+
+field-kit fills this in: which problems from its list the company has, with the evidence.

@@ -1,6 +1,6 @@
 # Accounts
 
-Create or check the target account list. Every other workflow reads `field/target-accounts.csv`, so this workflow runs first.
+Build or check the list of companies to meet: the target accounts. The plan, the events workflow, the ledger and the weekly report all mark these companies in their results.
 
 | The user has | Mode |
 | --- | --- |
@@ -13,14 +13,14 @@ Pick the mode from what the user has. Ask only if they gave both a list and exam
 ## Feed
 
 1. Map the list's columns to `account,domain,owner,status,tier,notes`. Remove duplicates by domain, then by name.
-2. Propose a tier where none is given. Tier 1 fits "Who buys" in `company.md` best. Give one reason per tier 1 account.
+2. Propose a tier where none is given. Tier 1 fits "Who buys" in the brief best. Give one reason per tier 1 account.
 3. Keep any owner or status the user gave.
 
 If the list has fewer than 20 accounts, offer Mirror with the list as seeds.
 
 ## Mirror
 
-Seeds come from "Customers we can name" in `company.md`, the current target list, or examples the user names. A seed buys, or would buy, what the user sells. It is never a vendor of a similar product. Seeds stay on the list.
+Seeds come from "Customers we can name" in the brief, the current target list, or examples the user names. A seed buys, or would buy, what the user sells. It is never a vendor of a similar product. Seeds stay on the list.
 
 Run the lookalike search for each seed. Use the need search instead when the seed is an enterprise.
 
@@ -53,7 +53,7 @@ Keep an enterprise only if a source shows the need: a job ad, a post, a talk or 
 ## What to keep
 
 - Drop directories, media, consultancies and duplicates.
-- Drop competitors from `company.md` and anyone selling the same product.
+- Drop competitors from the brief and anyone selling the same product.
 - Keep only companies with a headquarters or real office in the region. The city must come from a source, or write "unconfirmed".
 - Look for activity in the last 18 months. If none is found, keep the company as "activity unconfirmed" and rank it lower.
 - Rank named funding, named customers and signs of the need first. At most 30 new accounts per run.

@@ -1,28 +1,44 @@
 # field-kit
 
-Plans event-led pipeline for B2B teams from the target account list, then proves each event with the team's own guest lists. A skill for Claude, ChatGPT and Codex.
+Work out an event plan for your scaling company. A skill for Claude, ChatGPT and Codex.
 
-## What it does
+Give it your company name or website. It shows what your competitors are doing, where your buyers gather, and which companies you want in the room. Then it turns that into a 13-week calendar with costs, and tracks what each event produced.
+
+## The problem
+
+Most scaling companies pick events by habit, or because someone asked. They pay for a big sponsorship, come home with badge scans, and cannot say what it produced. Nobody decided who they wanted to meet, so nobody follows up.
+
+field-kit fixes that in order:
+
+| Problem | What field-kit does |
+| --- | --- |
+| Events picked by habit | Shows where your competitors show up and where your buyers go |
+| Sponsorships that produce badge scans | Plans smaller rooms you run yourself: dinners, demo nights, co-hosted meetups |
+| No idea who to meet | Builds a list of companies to meet, or checks yours |
+| Can't say what an event produced | Logs every event against that list, with cost per company reached |
+| No follow-up | A weekly list of companies showing buying signals, with one next step each |
+
+## What you get
 
 ```mermaid
 flowchart LR
-    I[company.md] --> A[accounts: feed, mirror or build]
-    A -- approved target-accounts.csv --> B{Workflow}
-    B --> C[plan]
-    B --> E[events]
-    B --> G[ledger]
-    B --> H[motion]
-    S[search.py: Exa, then Perplexity, then host search] -. sourced results .-> B
-    C & E & G & H -- marked against target list --> O[field/out/]
+    A[Company name or website] --> B[Brief]
+    B --> C[What competitors are doing]
+    B --> D[Where to show up]
+    B --> E[Companies to meet]
+    C & D & E --> F[13-week event plan]
+    F --> G[Ledger after each event]
+    G --> H[Weekly: accounts warming up]
 ```
 
 | Ask | Output |
 | --- | --- |
-| "Write a 90-day field plan for London" | Goal, accounts by tier, a 13-week calendar, budget and measures, in two pages |
-| "Here's our target list" / "Find companies like our customers" / "We have no list yet" | A reviewed `target-accounts.csv`: cleaned and tiered, mirrored from customers, or built from your buyer profile |
-| "Which events should we do in Europe?" | Conferences ranked by audience fit, competitor event history, recurring meetups, the gap, and a note to each organiser asking for the attendee companies |
-| "Log last night's demo night" | An attendee sheet and one row in a ledger of every event |
-| "Which accounts are in motion this week?" | Accounts with dated signals, one play and one owner each |
+| "Build us an event plan" | A brief, competitor activity, a shortlist of events, a list of companies to meet, and a 13-week calendar with costs |
+| "What are our competitors doing?" | Their events, own programmes, hiring and launches in your region, and the rooms nobody covers |
+| "Which events should we do in Europe?" | Conferences ranked by audience fit, recurring meetups, and a note to each organiser asking for the attendee companies |
+| "Who should we meet?" | A reviewed list of companies: from your list, like your customers, or built from your buyer profile |
+| "Log last night's dinner" | Who came, which target companies were there, and what it cost per company |
+| "Which accounts should we work this week?" | Companies with dated buying signals, one next step and one owner each |
 
 ## Install
 
@@ -41,25 +57,24 @@ codex plugin marketplace add b1rdmania/field-kit
 
 Claude.ai or ChatGPT: upload the `skills/field-kit` folder as a skill.
 
-## Usage
+## Use
 
-Ask for any row in the table. On the first run, field-kit creates a `field/` folder and asks for:
+Say "build us an event plan for <your company>". field-kit researches the company, drafts `field/brief.md`, and asks only what it could not find: buyers, region, budget, past events, what a win is.
 
-1. `field/company.md`: what you sell, who buys, competitors, region, budget, and what a win is.
-2. Your target accounts. Feed a list, ask for a mirror of your customers, or ask field-kit to build one. You approve the list before anything else runs.
+If you already use a product-marketing context file (`.agents/product-marketing.md`), field-kit reads it first.
 
-Output goes to `field/out/`. `examples/larkspur/` has a filled `company.md` and target list for a made-up company.
+Output goes to `field/out/`. `examples/larkspur/` has a filled brief and target list for a made-up company.
 
 ## Search
 
-Research uses [Exa](https://exa.ai) with your own key. If no Exa key is set, field-kit uses Perplexity, then the host's web search. Exa gives the best results for company search and lookalikes.
+Research uses [Exa](https://exa.ai) with your own key. If no Exa key is set, field-kit uses Perplexity, then the host's web search.
 
 ```bash
 EXA_API_KEY=...          # preferred
 PERPLEXITY_API_KEY=...   # used if no Exa key
 ```
 
-Set either key in the environment or in a `.env` file in the working folder. The search script runs in Claude Code and Codex. On Claude.ai and ChatGPT the skill uses the host's search.
+Set either key in the environment or in a `.env` file in the working folder.
 
 ## Requirements
 
@@ -68,22 +83,13 @@ Set either key in the environment or in a `.env` file in the working folder. The
 ## What it doesn't do
 
 - It does not contact anyone. It drafts messages only on request and never sends them.
-- It does not connect to a CRM. Meetings, opportunities and pipeline come from the sales team.
-- It does not look up people. It names a person only when a public source names them in that role.
+- It does not connect to a CRM. Meetings, opportunities and pipeline come from your sales team.
+- It cannot see who attends an event. Public pages rarely say. Confirmed attendance comes from the organiser or your own guest lists.
 - It does not commit guest lists. Git ignores `field/`, because guest lists contain personal data.
 
-## Project structure
+## Why this exists
 
-```
-plugin.json              portable manifest for ChatGPT and Codex
-.claude-plugin/          Claude Code manifest and marketplace
-skills/field-kit/
-  SKILL.md               setup, search rules, workflow router
-  workflows/             accounts, plan, events, ledger, motion
-  templates/             company.md, target accounts, signals
-  scripts/search.py      Exa, Perplexity, or exit 2 for host search
-examples/larkspur/       sample company and target list
-```
+Built for a field marketing role I didn't get. Three years of running events for a crypto foundation, the last one a summit in Vienna for 600 people across six venues. The hard part was never the venue. It was deciding which events were worth it, and proving it afterwards.
 
 ## Licence
 
