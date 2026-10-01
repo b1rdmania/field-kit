@@ -20,7 +20,7 @@ If the list has fewer than 20 accounts, offer Mirror with the list as seeds.
 
 ## Mirror
 
-Seeds come from "Customers we can name" in the brief, the current target list, or examples the user names. A seed buys, or would buy, what the user sells. It is never a vendor of a similar product. Seeds stay on the list.
+Seeds come from "Customers we can name" in the brief, the current target list, or examples the user names. A seed buys, or would buy, what the user sells. It is never a vendor of a similar product. Seeds in the region stay on the list. A seed outside the region is used for the search only. Customers get status "customer".
 
 Run the lookalike search for each seed. Use the need search instead when the seed is an enterprise.
 
@@ -56,7 +56,9 @@ Keep an enterprise only if a source shows the need: a job ad, a post, a talk or 
 - Drop competitors from the brief and anyone selling the same product.
 - Keep only companies with a headquarters or real office in the region. The city must come from a source, or write "unconfirmed".
 - Look for activity in the last 18 months. If none is found, keep the company as "activity unconfirmed" and rank it lower.
+- If the brief defines buyers by size, record headcount from a source and rank companies outside the band lower. Searches cannot filter by size.
 - Rank named funding, named customers and signs of the need first. At most 30 new accounts per run.
+- A company record from `--category company` counts as a source for city and headcount. Check that its domain matches the company.
 
 ## Domain check
 

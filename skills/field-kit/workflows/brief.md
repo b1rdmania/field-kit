@@ -4,7 +4,7 @@ Write `field/brief.md` from the company's name or website. Research first, then 
 
 ## Research
 
-1. `fetch <company website>`. Read the homepage, then the product, pricing, customers and careers pages if they exist.
+1. `fetch <company website>`. Read the homepage, then the product, pricing, customers and careers pages if they exist. Take customer names only from a customers or case-study page, or a logo wall labelled as customers. Names inside product screenshots or demos are sample data, not customers.
 2. `search "<company> competitors OR alternatives" --num 10` and `search "<company> vs" --num 10`.
 3. `search "<company> funding OR raises" --num 5` for stage and size.
 4. `search "<company> event OR conference OR sponsor OR meetup" --since <one year ago> --num 10` for past events.
@@ -15,7 +15,7 @@ Copy `templates/brief.md` to `field/brief.md` and fill each section from the res
 
 ## Ask
 
-Show the draft. Then ask, in one message, only the questions the research left open:
+Show the draft. Then ask these questions in one message. Skip any that the research or a context file already answers:
 
 1. **Buyers.** Which company types buy, and which job titles choose the product?
 2. **Region.** Where should the events happen?

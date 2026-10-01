@@ -42,7 +42,7 @@ Read the workflow file before you start it.
 | A guest list or attendee export, event results | `workflows/ledger.md` |
 | Which accounts to work this week | `workflows/motion.md` |
 
-`plan.md` is the default. It runs `competitors.md`, `events.md` and `accounts.md`, then writes the calendar. Each workflow also runs alone.
+`plan.md` is the default. It runs `competitors.md`, `accounts.md` and `events.md`, then writes the calendar. Each workflow also runs alone.
 
 ## Search
 

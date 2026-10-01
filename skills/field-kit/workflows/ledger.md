@@ -15,7 +15,7 @@ Real guest lists contain personal data. Keep them in `field/`, which git ignores
 1. Read the guest list. Normalise company names. Match each company to the target accounts by name and by domain.
 2. For companies not on the target list, run one `search "<company>" --category company --num 1` to get what they do. Skip people lookups.
 3. Write `field/out/attendees-<event>-<date>.csv` with these columns: name, company, title, target_account, registered, attended, what_company_does, source, owner, next_step. Leave owner and next_step blank. Sales fills them.
-4. Append one row to `field/ledger.csv`. Create the file with this header if it does not exist:
+4. Append one row to `field/ledger.csv`. If the file does not exist, copy `templates/ledger.csv`. Its header is:
 
    `event,date,format,city,cost,invited,registered,attended,targets_on_list,targets_attended,meetings,opportunities,pipeline`
 

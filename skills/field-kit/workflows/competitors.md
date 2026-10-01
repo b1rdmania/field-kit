@@ -2,15 +2,15 @@
 
 What are the competitors doing to reach buyers? Events first, then the other signs of where they are pushing.
 
-Inputs: competitors and region from the brief. Use the last 12 months.
+Inputs: competitors and region from the brief. Use the last 12 months. For each competitor, search the whole region once and the main city once. Do not split by every city.
 
 ## Research
 
 For each competitor:
 
-1. **Events.** `search "<competitor> event OR sponsor OR meetup OR dinner OR booth <city or country>" --since <one year ago>`. Note the format, place and date.
+1. **Events.** `search "<competitor> event OR sponsor OR meetup OR dinner OR booth <region or main city>" --since <one year ago>`. Note the format, place and date.
 2. **Own programmes.** `search "<competitor> community OR user group OR conference OR summit OR roadshow" --since <one year ago>`. Their own event or community, if they run one.
-3. **Hiring.** `search "<competitor> hiring events manager OR field marketing OR community manager OR account executive <region>" --since <six months ago>`. New roles show where they plan to grow.
+3. **Hiring.** `search "<competitor> hiring events manager OR field marketing OR community manager OR account executive <region>" --since <six months ago>`. New roles show where they plan to grow. Use job pages and company career pages. Count roles, not people. Ignore personal profiles.
 4. **Partnerships and launches.** `search "<competitor> partnership OR launch <region>" --since <six months ago>`.
 
 ## Output
