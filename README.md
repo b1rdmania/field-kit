@@ -91,6 +91,10 @@ Set either key in the environment or in a `.env` file in the working folder.
 
 Built for a field marketing role I didn't get. Three years of running events for a crypto foundation, the last one a summit in Vienna for 600 people across six venues. The hard part was never the venue. It was deciding which events were worth it, and proving it afterwards.
 
+## Work with me
+
+For professional help with event strategy, structure and planning worldwide, contact [@b1rdmania on X](https://x.com/b1rdmania).
+
 ## Licence
 
 MIT

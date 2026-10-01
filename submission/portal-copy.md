@@ -11,6 +11,7 @@ This file prepares the listing. It does not authorize a submission.
 - Short description: Plan events that reach buyers
 - Website: https://github.com/b1rdmania/field-kit
 - Support: https://github.com/b1rdmania/field-kit/issues
+- Event planning services: https://x.com/b1rdmania
 - Privacy: https://github.com/b1rdmania/field-kit/blob/main/PRIVACY.md
 - Terms: https://github.com/b1rdmania/field-kit/blob/main/TERMS.md
 - Icon and logo: `assets/icon.svg`
@@ -57,9 +58,8 @@ Record the Codex install and no-key run, plus the remaining verification gaps. S
 3. Confirm that the verified developer identity displays the intended public name, b1rdmania.
 4. Review the fictional screenshot labels and the five [test cases](test-cases.md).
 5. Build the ZIP with `python3 submission/package.py`.
-6. Use `field/submission/field-kit-listing-assets-0.1.1.zip` for listing images, copy and policies.
-7. Use `field/submission/field-kit-0.1.1.zip` for the installable plugin.
-8. Review the archive contents before uploading it yourself.
+6. Use `field/submission/field-kit-0.1.1.zip`. It includes the plugin, listing images, copy, policies and test notes.
+7. Review the archive contents before uploading it yourself.
 
 No upload to OpenAI or directory submission has been made.
 
