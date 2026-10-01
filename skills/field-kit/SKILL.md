@@ -14,7 +14,7 @@ Write for a founder or marketer who has never run events. No jargon without a pl
 All work lives in a `field/` folder in the user's working directory.
 
 1. Look for existing context, in this order: `field/brief.md`, `.agents/product-marketing.md`, `.claude/product-marketing.md`, `product-marketing-context.md`. Read what exists. Ask only for what it does not cover.
-2. If `field/brief.md` does not exist, run `workflows/brief.md`. It needs only the company name or website.
+2. If `field/brief.md` does not exist, run `workflows/brief.md`. It needs only the company name or website. It ends with questions. Stop after them and wait for the user's reply before any other workflow.
 3. Read `field/brief.md` at the start of every workflow. Read `field/target-accounts.csv` too, if it exists.
 
 ## Problems this fixes
