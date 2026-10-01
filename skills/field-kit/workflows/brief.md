@@ -24,6 +24,8 @@ Show the draft. Then ask these questions in one message. Skip any that the resea
 5. **What a win is.** Meetings, opportunities, pipeline? What is a first-year contract worth?
 6. **Off limits.** Anything that must not be claimed or named?
 
+**Stop here and wait for the answers.** Do not start another workflow until the user replies. The only exception: the user asked for a draft on assumptions. Then keep every unanswered item marked "(guess)" and write "Questions not yet answered" at the top of the brief. Never write that a question was answered when it was not.
+
 Update the brief with the answers. Remove "(guess)" from anything the user confirmed.
 
 ## Diagnose

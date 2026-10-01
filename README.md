@@ -95,13 +95,13 @@ Built for a field marketing role I didn't get. Three years of running events for
 
 For professional help with event strategy, structure and planning worldwide, contact [@b1rdmania on X](https://x.com/b1rdmania).
 
-## Licence
-
-MIT
-
 ## Privacy and terms
 
 Research uses Exa or Perplexity with your key, or your AI host's search. Output stays in your `field/` folder.
 Check research and costs before acting. The MIT License applies.
 
 [Privacy policy](https://github.com/b1rdmania/field-kit/blob/main/PRIVACY.md) · [Terms and conditions](https://github.com/b1rdmania/field-kit/blob/main/TERMS.md)
+
+## Licence
+
+MIT. See [CHANGELOG.md](CHANGELOG.md) for releases.

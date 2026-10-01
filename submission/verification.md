@@ -1,5 +1,7 @@
 # Verification report
 
+This report covers 0.1.1. Version 1.0.0 fixes the brief failure in section 2: the brief now stops and waits for answers, and the skill uses the host's search when it cannot run scripts. ChatGPT desktop and web checks are still open.
+
 Checked 1 October 2026. Baseline: `9b5df05`. Codex CLI: `0.159.3`.
 The tests used the configured Codex model, GPT-6-Astra, with medium reasoning.
 

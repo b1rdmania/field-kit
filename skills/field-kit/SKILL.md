@@ -56,7 +56,7 @@ python3 scripts/search.py fetch https://example.com/speakers
 
 Search results hold only part of each page. Use `fetch` to read a full page, such as a speaker list. It returns up to 40,000 characters. `--chars` sets more.
 
-If the script exits with code 2, no provider worked: no key, a failed call, or a command that needs Exa. If Exa fails, the script tries Perplexity first. Tell the user once: "field-kit works best with an Exa API key (exa.ai). Set EXA_API_KEY in your environment or in a .env file in this folder. I will use my own web search until then." Then use the host's own search and fetch tools for the rest of the run. Do not repeat the message. Without Exa, check that each `--category company` result is a company page.
+If the host cannot run scripts, skip `search.py` and use the host's own search and fetch tools from the start. If the script exits with code 2, no provider worked: no key, a failed call, or a command that needs Exa. If Exa fails, the script tries Perplexity first. Tell the user once: "field-kit works best with an Exa API key (exa.ai). Set EXA_API_KEY in your environment or in a .env file in this folder. I will use my own web search until then." Then use the host's own search and fetch tools for the rest of the run. Do not repeat the message. Without Exa, check that each `--category company` result is a company page.
 
 **Region.** Before any search, split the region into three to five cities with the most likely buyers, or countries for a large region. Search each on its own. "London and Western Europe" as one query returns noise.
 
