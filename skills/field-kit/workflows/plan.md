@@ -2,7 +2,7 @@
 
 A field plan for one region over 90 days. It runs the other workflows, then joins their results into one plan.
 
-Before you start, `field/company.md` must be filled and `field/target-accounts.csv` must have accounts. If there are fewer than 20 target accounts, run `mirror.md` in expand mode first and ask the user which results to add.
+Before you start, `field/company.md` must be filled. If `field/target-accounts.csv` is empty or has fewer than 20 accounts, run `accounts.md` first.
 
 ## Steps
 

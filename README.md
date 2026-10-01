@@ -6,21 +6,21 @@ Plans and runs event-led pipeline for B2B teams, starting from the target accoun
 
 ```mermaid
 flowchart LR
-    A[company.md + target-accounts.csv] --> B{Workflow}
+    I[company.md] --> A[accounts: feed, mirror or build]
+    A -- approved target-accounts.csv --> B{Workflow}
     B --> C[plan]
-    B --> D[mirror]
     B --> E[events]
     B --> F[cohosts]
     B --> G[ledger]
     B --> H[motion]
     S[search.py: Exa, then Perplexity, then host search] -. sourced results .-> B
-    C & D & E & F & G & H -- marked against target list --> O[field/out/]
+    C & E & F & G & H -- marked against target list --> O[field/out/]
 ```
 
 | Ask | Output |
 | --- | --- |
 | "Write a 90-day field plan for London" | Goal, accounts by tier, a 13-week calendar, budget and measures, in two pages |
-| "Find companies in Europe like our customers" | Lookalike accounts by city, each with a source, marked against the target list |
+| "Here's our target list" / "Find companies like our customers" / "We have no list yet" | A reviewed `target-accounts.csv`: cleaned and tiered, mirrored from customers, or built from your buyer profile |
 | "Which events do our competitors run?" | Competitor events, the region's calendar, the target accounts at each event, and the gap |
 | "Who runs AI developer meetups in Berlin?" | Recurring rooms, who runs them, size and last date seen |
 | "Log last night's demo night" | An attendee sheet and one row in a ledger of every event |
@@ -48,7 +48,7 @@ Claude.ai or ChatGPT: upload the `skills/field-kit` folder as a skill.
 Ask for any row in the table. On the first run, field-kit creates a `field/` folder and asks for:
 
 1. `field/company.md`: what you sell, who buys, competitors, region, budget, and what a win is.
-2. `field/target-accounts.csv`: your target accounts. If you have none, ask for a mirror of your customers.
+2. Your target accounts. Feed a list, ask for a mirror of your customers, or ask field-kit to build one. You approve the list before anything else runs.
 
 Output goes to `field/out/`. `examples/larkspur/` has a filled `company.md` and target list for a made-up company.
 
@@ -77,7 +77,7 @@ plugin.json              portable manifest for ChatGPT and Codex
 .claude-plugin/          Claude Code manifest and marketplace
 skills/field-kit/
   SKILL.md               setup, search rules, workflow router
-  workflows/             plan, mirror, events, cohosts, ledger, motion
+  workflows/             accounts, plan, events, cohosts, ledger, motion
   templates/             company.md, target accounts, customers, signals
   scripts/search.py      Exa, Perplexity, or exit 2 for host search
 examples/larkspur/       sample company and target list

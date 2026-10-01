@@ -1,6 +1,6 @@
 ---
 name: field-kit
-description: Plan and run event-led pipeline for a B2B team. Builds a 90-day field plan, mirrors target accounts and customers into a region, maps competitor events and the gaps, finds co-hosts, turns a guest list into a pipeline ledger, and says which target accounts to work this week. Use when the user asks for a field marketing plan, event strategy, "which events should we do", account-based events, a lookalike account list for a region, an event ROI ledger, or "which accounts are in motion".
+description: Plan and run event-led pipeline for a B2B team. Creates or checks the target account list (feed, mirror or build), builds a 90-day field plan, maps competitor events and the gaps, finds co-hosts, turns a guest list into a pipeline ledger, and says which target accounts to work this week. Use when the user asks for a field marketing plan, event strategy, "which events should we do", account-based events, a lookalike account list for a region, an event ROI ledger, or "which accounts are in motion".
 ---
 
 # field-kit
@@ -13,7 +13,7 @@ All work lives in a `field/` folder in the user's working directory.
 
 1. If `field/` does not exist, create it and copy the files from `templates/` into it.
 2. Ask the user to fill `field/company.md` first. Ask the questions in that file one at a time if the user prefers. Do not start a workflow with an empty `company.md`.
-3. Ask for the target account list. The user can paste it, give a CSV, or ask you to build one with the mirror workflow. Save it as `field/target-accounts.csv`.
+3. Run `workflows/accounts.md` to create or check the target account list. The user can feed a list, mirror customers or examples, or build a list from `company.md`. No other workflow runs until `field/target-accounts.csv` has approved accounts.
 4. Read `field/company.md` and `field/target-accounts.csv` at the start of every workflow.
 
 ## Search
@@ -37,13 +37,13 @@ Read the workflow file before you start it.
 | User asks | Workflow |
 | --- | --- |
 | A 90-day plan, a field strategy, where to start | `workflows/plan.md` |
-| Companies in a region that look like our customers or targets | `workflows/mirror.md` |
+| A target list, more accounts, lookalikes of our customers | `workflows/accounts.md` |
 | Which events competitors run, which events to attend or sponsor | `workflows/events.md` |
 | Who already runs the room for an audience in a city | `workflows/cohosts.md` |
 | A guest list or attendee export, event ROI, a ledger | `workflows/ledger.md` |
 | Which accounts to work this week, account signals | `workflows/motion.md` |
 
-`plan.md` runs the others in order. Each workflow also runs alone.
+`accounts.md` runs first. `plan.md` runs the others in order. Each workflow also runs alone.
 
 ## Rules for every output
 
