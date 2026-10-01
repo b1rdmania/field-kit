@@ -2,6 +2,11 @@
 
 All notable changes to field-kit are listed here. Versions follow [semantic versioning](https://semver.org).
 
+## Unreleased
+
+- Allow an explicitly requested draft on assumptions through the skill entry point and plan workflow, as the brief already permits.
+- Keep the default pause for the user's answers before continuing.
+
 ## 1.0.0 (2026-10-01)
 
 First public release.
