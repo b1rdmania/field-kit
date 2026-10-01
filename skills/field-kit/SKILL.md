@@ -1,6 +1,6 @@
 ---
 name: field-kit
-description: Plan and run event-led pipeline for a B2B team. Creates or checks the target account list (feed, mirror or build), builds a 90-day field plan, maps competitor events and the gaps, finds co-hosts, turns a guest list into a pipeline ledger, and says which target accounts to work this week. Use when the user asks for a field marketing plan, event strategy, "which events should we do", account-based events, a lookalike account list for a region, an event ROI ledger, or "which accounts are in motion".
+description: Plan and run event-led pipeline for a B2B team. Creates or checks the target account list (feed, mirror or build), builds a 90-day field plan, maps the conferences, competitor events and meetups that reach those accounts, turns a guest list into a pipeline ledger, and says which target accounts to work this week. Use when the user asks for a field marketing plan, event strategy, "which events should we do", account-based events, a lookalike account list for a region, an event ROI ledger, or "which accounts are in motion".
 ---
 
 # field-kit
@@ -38,12 +38,11 @@ Read the workflow file before you start it.
 | --- | --- |
 | A 90-day plan, a field strategy, where to start | `workflows/plan.md` |
 | A target list, more accounts, lookalikes of our customers | `workflows/accounts.md` |
-| Which events competitors run, which events to attend or sponsor | `workflows/events.md` |
-| Who already runs the room for an audience in a city | `workflows/cohosts.md` |
+| Which events to attend or sponsor, what competitors run, who runs meetups in a city | `workflows/events.md` |
 | A guest list or attendee export, event ROI, a ledger | `workflows/ledger.md` |
 | Which accounts to work this week, account signals | `workflows/motion.md` |
 
-`accounts.md` runs first. `plan.md` runs the others in order. Each workflow also runs alone.
+`accounts.md` runs first. `plan.md` runs `events.md`, then writes the plan. Each workflow also runs alone.
 
 ## Rules for every output
 

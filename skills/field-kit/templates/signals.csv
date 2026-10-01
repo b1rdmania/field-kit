@@ -1,7 +1,7 @@
-signal,weight,window_days,query,why
-product_launch,5,120,"{account} launches new product OR feature",They shipped something. Check whether it needs what we sell.
-leader_change,4,120,"{account} appoints new CTO OR VP Engineering OR Head of Product",A new leader reviews the stack in the first 90 days.
-competitor_use,4,180,"{account} uses {competitors}",They already pay for the job we do.
-hiring,3,60,"{account} hiring {team} job",Open roles show a build in progress.
-talks,3,180,"{account} engineer OR leader talk OR podcast OR blog post",A named person who speaks in public. A possible speaker or first contact.
-funding,2,180,"{account} raises funding round OR acquisition",New money. Weak alone, useful with another signal.
+signal,query,why
+product_launch,{account} launches new product OR feature,They shipped something. Check whether it needs what we sell.
+leader_change,{account} appoints new CTO OR VP Engineering OR Head of Product,A new leader reviews the stack in the first 90 days.
+competitor_use,{account} uses {competitors},They already pay for the job we do.
+hiring,{account} hiring {team} job,Open roles show a build in progress.
+talks,{account} engineer OR leader talk OR podcast OR blog post,A named person who speaks in public. A possible speaker or first contact.
+funding,{account} raises funding round OR acquisition,New money. Weak alone

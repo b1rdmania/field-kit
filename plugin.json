@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "field-kit",
   "version": "0.1.0",
-  "description": "Event-led pipeline for B2B teams: target account lists (feed, mirror or build), a 90-day field plan, competitor events, co-hosts, an event ledger and a weekly accounts-in-motion report.",
+  "description": "Event-led pipeline for B2B teams: target account lists (feed, mirror or build), a 90-day field plan, events and meetups, an event ledger and a weekly accounts-in-motion report.",
   "author": { "name": "b1rdmania", "url": "https://github.com/b1rdmania" },
   "repository": "https://github.com/b1rdmania/field-kit",
   "license": "MIT",
@@ -12,7 +12,7 @@
       "interface": {
         "displayName": "field-kit",
         "shortDescription": "Event-led pipeline for B2B teams",
-        "longDescription": "Bring your target accounts, mirror your customers, or build a list from scratch. Plan 90 days of field marketing from that list, map competitor events and gaps, find co-hosts, log every event against the target list, and see which accounts to work this week. Works best with an Exa API key.",
+        "longDescription": "Bring your target accounts, mirror your customers, or build a list from scratch. Plan 90 days of field marketing from that list, map the events and meetups that reach it, log every event against the target list, and see which accounts to work this week. Works best with an Exa API key.",
         "developerName": "b1rdmania",
         "category": "Productivity"
       }

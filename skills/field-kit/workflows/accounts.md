@@ -24,7 +24,7 @@ If the list has fewer than 20 accounts, offer Mirror mode with the list as seeds
 
 ## Mirror
 
-Seeds are the customers in `field/customers.csv`, the accounts already in `field/target-accounts.csv`, or examples the user names. Ask for the region if `company.md` does not give one.
+Seeds are the customers under "Customers we can name" in `company.md`, the accounts already in `field/target-accounts.csv`, or examples the user names. Ask for the region if `company.md` does not give one.
 
 For each seed:
 

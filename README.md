@@ -10,21 +10,19 @@ flowchart LR
     A -- approved target-accounts.csv --> B{Workflow}
     B --> C[plan]
     B --> E[events]
-    B --> F[cohosts]
     B --> G[ledger]
     B --> H[motion]
     S[search.py: Exa, then Perplexity, then host search] -. sourced results .-> B
-    C & E & F & G & H -- marked against target list --> O[field/out/]
+    C & E & G & H -- marked against target list --> O[field/out/]
 ```
 
 | Ask | Output |
 | --- | --- |
 | "Write a 90-day field plan for London" | Goal, accounts by tier, a 13-week calendar, budget and measures, in two pages |
 | "Here's our target list" / "Find companies like our customers" / "We have no list yet" | A reviewed `target-accounts.csv`: cleaned and tiered, mirrored from customers, or built from your buyer profile |
-| "Which events do our competitors run?" | Competitor events, the region's calendar, the target accounts at each event, and the gap |
-| "Who runs AI developer meetups in Berlin?" | Recurring rooms, who runs them, size and last date seen |
+| "Which events should we do in Europe?" | Conferences, competitor events and recurring meetups, the target accounts at each, and the gap |
 | "Log last night's demo night" | An attendee sheet and one row in a ledger of every event |
-| "Which accounts are in motion this week?" | Accounts with dated signals, a score, one play and one owner |
+| "Which accounts are in motion this week?" | Accounts with dated signals, one play and one owner each |
 
 ## Install
 
@@ -77,8 +75,8 @@ plugin.json              portable manifest for ChatGPT and Codex
 .claude-plugin/          Claude Code manifest and marketplace
 skills/field-kit/
   SKILL.md               setup, search rules, workflow router
-  workflows/             accounts, plan, events, cohosts, ledger, motion
-  templates/             company.md, target accounts, customers, signals
+  workflows/             accounts, plan, events, ledger, motion
+  templates/             company.md, target accounts, signals
   scripts/search.py      Exa, Perplexity, or exit 2 for host search
 examples/larkspur/       sample company and target list
 ```
