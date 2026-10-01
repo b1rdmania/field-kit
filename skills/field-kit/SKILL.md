@@ -70,4 +70,5 @@ If the host cannot run scripts, skip `search.py` and use the host's own search a
 - Companies first. Name a person only when a public source names them in that role, and give the source.
 - Plain English. Sentences of 20 words or fewer. Active voice. Tables over prose.
 - End every markdown output with a short "Gaps" section: what the research could not establish and what a person checks next.
+- After "Gaps", add this last line: `Made with [field-kit](https://github.com/b1rdmania/field-kit).`
 - Never contact anyone. Draft messages only when the user asks, and never send them.
